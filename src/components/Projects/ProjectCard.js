@@ -1,53 +1,70 @@
 import React from "react";
 import { BiLinkExternal } from "react-icons/bi";
-import { FaGithub } from "react-icons/fa";   // ✅ use FaGithub instead
+import { FaGithub } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import {
-  LinkName,
   ProjectCard,
-  ProjectCodeLink,
-  ProjectDetails,
-  ProjectImage,
-  ProjectLiveLink,
+  ProjectCardImage,
+  ProjectCardContent,
+  ProjectTags,
+  ProjectTag,
   ProjectTitle,
-  ProjectTransitionImage,
+  ProjectDescription,
+  ProjectLinks,
+  ProjectLink,
 } from "../styles/Projects.styled";
 
 const ProjectCardComponent = ({
   image,
-  transitionImage,
   title,
+  description,
+  tags = [],
   codeLink,
   liveLink,
 }) => {
   return (
-    <>
-      <IconContext.Provider value={{ size: "1rem" }}>
-        <ProjectCard>
-          <ProjectImage src={image} alt={title} />
-          <ProjectTransitionImage src={transitionImage} alt={title} />
-          <ProjectDetails>
-            <ProjectTitle>{title}</ProjectTitle>
-            <ProjectCodeLink
-              href={codeLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaGithub />   {/* ✅ replaced GoMarkGithub */}
-              <LinkName>Github Code</LinkName>
-            </ProjectCodeLink>
-            <ProjectLiveLink
-              href={liveLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <BiLinkExternal />
-              <LinkName>Live</LinkName>
-            </ProjectLiveLink>
-          </ProjectDetails>
-        </ProjectCard>
-      </IconContext.Provider>
-    </>
+    <IconContext.Provider value={{ size: "1.25rem" }}>
+      <ProjectCard>
+        <ProjectCardImage src={image} alt={title} />
+        <ProjectCardContent>
+          {tags && tags.length > 0 && (
+            <ProjectTags>
+              {tags.map((tag) => (
+                <ProjectTag key={tag}>{tag}</ProjectTag>
+              ))}
+            </ProjectTags>
+          )}
+          <ProjectTitle>{title}</ProjectTitle>
+          {description && (
+            <ProjectDescription>{description}</ProjectDescription>
+          )}
+          <ProjectLinks>
+            {liveLink && (
+              <ProjectLink
+                href={liveLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="View Live"
+                aria-label="View Live Demo"
+              >
+                <BiLinkExternal />
+              </ProjectLink>
+            )}
+            {codeLink && (
+              <ProjectLink
+                href={codeLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="View Code"
+                aria-label="View Source Code on GitHub"
+              >
+                <FaGithub />
+              </ProjectLink>
+            )}
+          </ProjectLinks>
+        </ProjectCardContent>
+      </ProjectCard>
+    </IconContext.Provider>
   );
 };
 

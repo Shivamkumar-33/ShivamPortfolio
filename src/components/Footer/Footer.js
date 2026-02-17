@@ -50,6 +50,7 @@ const Footer = () => {
               href="https://github.com/Shivamkumar-33"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="GitHub Profile"
             >
               GitHub
             </ContactLink>
@@ -57,6 +58,7 @@ const Footer = () => {
               href="https://www.linkedin.com/in/shivam-kumar-34471224b/"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="LinkedIn Profile"
             >
               LinkedIn
             </ContactLink>
@@ -64,6 +66,7 @@ const Footer = () => {
               href="https://www.instagram.com/shivamkumar_rudra?igsh=MXFydXNlc2J4YzBleg=="
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Instagram Profile"
             >
               Instagram
             </ContactLink>

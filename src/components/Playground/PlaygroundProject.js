@@ -1,48 +1,57 @@
 import React from "react";
+import { BiLinkExternal } from "react-icons/bi";
+import { IconContext } from "react-icons";
 import {
-  PlaygroundImage,
-  PlaygroundProjectDetails,
-  PlaygroundProjectImageContainer,
-  PlayGroundProjectLive,
-  PlaygroundProjectName,
-  PlaygroundProject,
-  LinkWrapper,
-  LiveIcon,
-  PlaygroundProjectWrapper,
+  PlaygroundCard,
+  PlaygroundCardImage,
+  PlaygroundCardContent,
+  PlaygroundTags,
+  PlaygroundTag,
+  PlaygroundTitle,
+  PlaygroundDescription,
+  PlaygroundLinks,
+  PlaygroundLink,
 } from "../styles/Playground.styled";
 
 const PlaygroundProjectComponent = ({
   img,
   projectName,
+  description,
+  tags = [],
   liveLink,
-  hasLink,
 }) => {
   return (
-    <PlaygroundProjectWrapper hasLink={hasLink}>
-      <PlaygroundProject hasLink={hasLink}>
-        <PlaygroundProjectImageContainer
-          href={liveLink}
-          hasLink={hasLink}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <PlaygroundImage src={img} />
-        </PlaygroundProjectImageContainer>
-        <PlaygroundProjectDetails>
-          <PlaygroundProjectName>{projectName}</PlaygroundProjectName>
-          <LinkWrapper hasLink={hasLink}>
-            <PlayGroundProjectLive
-              href={liveLink}
-              hasLink={hasLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View Live <LiveIcon />
-            </PlayGroundProjectLive>
-          </LinkWrapper>
-        </PlaygroundProjectDetails>
-      </PlaygroundProject>
-    </PlaygroundProjectWrapper>
+    <IconContext.Provider value={{ size: "1.25rem" }}>
+      <PlaygroundCard>
+        <PlaygroundCardImage src={img} alt={projectName} />
+        <PlaygroundCardContent>
+          {tags && tags.length > 0 && (
+            <PlaygroundTags>
+              {tags.map((tag) => (
+                <PlaygroundTag key={tag}>{tag}</PlaygroundTag>
+              ))}
+            </PlaygroundTags>
+          )}
+          <PlaygroundTitle>{projectName}</PlaygroundTitle>
+          {description && (
+            <PlaygroundDescription>{description}</PlaygroundDescription>
+          )}
+          <PlaygroundLinks>
+            {liveLink && (
+              <PlaygroundLink
+                href={liveLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="View Live"
+                aria-label="View Live Demo"
+              >
+                <BiLinkExternal />
+              </PlaygroundLink>
+            )}
+          </PlaygroundLinks>
+        </PlaygroundCardContent>
+      </PlaygroundCard>
+    </IconContext.Provider>
   );
 };
 

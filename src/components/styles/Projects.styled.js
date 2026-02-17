@@ -1,22 +1,4 @@
-import styled, { css } from "styled-components";
-
-export const HoverStyle = css`
-  content: "";
-  position: absolute;
-  bottom: -0.3rem;
-  right: 0;
-  left: 0;
-  width: 0;
-  height: 0.7px;
-  background: ${({ theme }) => theme.backgroundColor.light};
-  transition: 0.3s ease-in-out;
-`;
-
-export const Flex = css`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-`;
+import styled from "styled-components";
 
 export const StyledProjects = styled.section`
   background-color: ${({ theme }) => theme.backgroundColor.light};
@@ -24,127 +6,106 @@ export const StyledProjects = styled.section`
 `;
 
 export const ProjectsContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 1.25rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
   margin-top: 3rem;
-`;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 
-export const ProjectImage = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: relative;
-`;
-
-export const ProjectTransitionImage = styled.img`
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  object-fit: cover;
-  position: absolute;
-  transition: 0.3s ease;
-`;
-
-export const ProjectDetails = styled.div`
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  padding: 5rem 3rem;
-  color: #fff;
-  background: linear-gradient(
-    180deg,
-    transparent,
-    rgba(13, 14, 14, 0.97),
-    rgba(0, 0, 0, 0.9)
-  );
-  transform: translateY(100%);
-  opacity: 0;
-  pointer-events: none;
-  transition: 0.6s ease;
-  margin-top: 2rem;
-  z-index: 5;
-`;
-
-export const ProjectTitle = styled.span``;
-
-export const LinkName = styled.span``;
-
-export const ProjectCodeLink = styled.a`
-  position: absolute;
-  bottom: 2rem;
-  left: 9rem;
-  color: ${({ theme }) => theme.color.light};
-  font-size: 14px;
-  ${Flex}
-
-  ${LinkName}::after {
-    ${HoverStyle}
-  }
-
-  ${LinkName}:hover::after {
-    width: 100%;
-  }
-`;
-
-export const ProjectLiveLink = styled.a`
-  position: absolute;
-  bottom: 2rem;
-  left: 3rem;
-  color: ${({ theme }) => theme.color.light};
-  font-size: 14px;
-  ${Flex}
-
-  ${LinkName}::after {
-    ${HoverStyle}
-  }
-
-  ${LinkName}:hover::after {
-    width: 100%;
+  @media all and (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    grid-template-columns: 1fr;
   }
 `;
 
 export const ProjectCard = styled.article`
-  background: #fff;
-  width: 32rem;
-  height: 23rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  border-radius: 5px;
-  position: relative;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 8px;
   overflow: hidden;
-
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0 0 0 0;
-    background: rgb(13, 14, 14, 0.1);
-    z-index: 2;
-  }
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  cursor: pointer;
 
   &:hover {
-    box-shadow: 0 2px 15px rgba(13, 14, 14) 15%;
+    border-color: ${({ theme }) => theme.backgroundColor.orange};
+    box-shadow: 0 8px 24px rgba(252, 41, 4, 0.15);
   }
+`;
 
-  &:hover ${ProjectDetails} {
-    transform: translateY(0);
-    opacity: 1;
-    pointer-events: all;
-  }
+export const ProjectCardImage = styled.img`
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 
-  &:hover ${ProjectTransitionImage} {
-    opacity: 1;
+  ${ProjectCard}:hover & {
+    transform: scale(1.05);
   }
+`;
 
-  @media all and (max-width: ${({ theme }) => theme.breakpoints.lg}) {
-    width: 25rem;
-  }
-  @media all and (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    width: 100%;
+export const ProjectCardContent = styled.div`
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1;
+`;
+
+export const ProjectTags = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+`;
+
+export const ProjectTag = styled.span`
+  font-size: 0.75rem;
+  padding: 0.4rem 0.8rem;
+  background: rgba(252, 41, 4, 0.1);
+  border: 1px solid rgba(252, 41, 4, 0.3);
+  border-radius: 20px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+`;
+
+export const ProjectTitle = styled.h3`
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.3;
+`;
+
+export const ProjectDescription = styled.p`
+  font-size: 0.9rem;
+  color: #aaa;
+  line-height: 1.5;
+  flex: 1;
+`;
+
+export const ProjectLinks = styled.div`
+  display: flex;
+  gap: 1rem;
+  margin-top: auto;
+`;
+
+export const ProjectLink = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #333;
+  border-radius: 6px;
+  color: #fff;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: ${({ theme }) => theme.backgroundColor.orange};
+    color: ${({ theme }) => theme.backgroundColor.orange};
+    background: rgba(252, 41, 4, 0.1);
   }
 `;

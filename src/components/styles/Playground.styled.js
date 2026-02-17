@@ -1,107 +1,113 @@
 import styled from "styled-components";
-import { BsArrowUpRightCircle } from "react-icons/bs";
-
-export const LiveIcon = styled(BsArrowUpRightCircle)`
-  transition: 0.3s ease-in-out;
-`;
 
 export const StyledPlayground = styled.section`
   background-color: ${({ theme }) => theme.backgroundColor.light};
   color: ${({ theme }) => theme.color.darkGray};
 `;
 
-export const PlaygroundProjectContainer = styled.div`
+export const PlaygroundContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
   margin-top: 3rem;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-`;
-
-export const LinkWrapper = styled.span`
-  cursor: ${({ hasLink }) => (hasLink ? "pointer" : "not-allowed")};
-  position: relative;
-
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: -0.3rem;
-    right: 0;
-    left: 0;
-    width: 0;
-    transform: scaleX(1);
-    display: block;
-    height: 0.0625rem;
-    background: ${({ theme }) => theme.backgroundColor.dark};
-    transition: 0.3s ease-in-out;
-  }
-`;
-
-export const PlaygroundImage = styled.img`
-  height: 100%;
-  width: 100%;
-  transition: 0.3s ease;
-`;
-
-export const PlaygroundProjectWrapper = styled.article`
-  cursor: ${({ hasLink }) => (hasLink ? "pointer" : "not-allowed")};
-  position: relative;
-  overflow: hidden;
-  border-radius: 5px;
-`;
-
-export const PlaygroundProject = styled.div`
-  pointer-events: ${({ hasLink }) => (hasLink ? "all" : "none")};
-
-  &:hover ${LiveIcon} {
-    transform: ${({ hasLink }) => (hasLink ? "rotate(50deg)" : "none")};
-  }
-
-  &:hover ${LinkWrapper}::after {
-    width: ${({ hasLink }) => (hasLink ? "80%;" : "0")};
-  }
-
-  &:hover ${PlaygroundImage} {
-    transform: ${({ hasLink }) => (hasLink ? "scale(1.025)" : "0")};
-  }
-`;
-
-export const PlaygroundProjectImageContainer = styled.a`
-  cursor: ${({ hasLink }) => (hasLink ? "pointer" : "not-allowed")};
-  width: 32rem;
-  height: 100%;
-  position: relative;
-  display: block;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 
   @media all and (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    width: 100%;
+    grid-template-columns: 1fr;
   }
 `;
 
-export const PlaygroundProjectDetails = styled.div`
+export const PlaygroundCard = styled.article`
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  overflow: hidden;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.85rem 0.5rem;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    border-color: ${({ theme }) => theme.backgroundColor.orange};
+    box-shadow: 0 8px 24px rgba(252, 41, 4, 0.15);
+  }
+`;
+
+export const PlaygroundCardImage = styled.img`
   width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+
+  ${PlaygroundCard}:hover & {
+    transform: scale(1.05);
+  }
 `;
 
-export const PlaygroundProjectName = styled.h2`
-  text-transform: capitalize;
+export const PlaygroundCardContent = styled.div`
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1;
+`;
+
+export const PlaygroundTags = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+`;
+
+export const PlaygroundTag = styled.span`
+  font-size: 0.75rem;
+  padding: 0.4rem 0.8rem;
+  background: rgba(252, 41, 4, 0.1);
+  border: 1px solid rgba(252, 41, 4, 0.3);
+  border-radius: 20px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+`;
+
+export const PlaygroundTitle = styled.h3`
+  font-size: 1.25rem;
   font-weight: 700;
-  font-size: 1rem;
-  white-space: pre-line;
+  color: #fff;
+  line-height: 1.3;
 `;
 
-export const PlayGroundProjectLive = styled.a`
+export const PlaygroundDescription = styled.p`
+  font-size: 0.9rem;
+  color: #aaa;
+  line-height: 1.5;
+  flex: 1;
+`;
+
+export const PlaygroundLinks = styled.div`
+  display: flex;
+  gap: 1rem;
+  margin-top: auto;
+`;
+
+export const PlaygroundLink = styled.a`
   display: flex;
   align-items: center;
-  gap: 1rem;
-  font-weight: 600;
-  font-size: 0.9rem;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #333;
+  border-radius: 6px;
+  color: #fff;
+  transition: all 0.3s ease;
 
-  cursor: ${({ hasLink }) => (hasLink ? "pointer" : "not-allowed")};
-  pointer-events: ${({ hasLink }) => (hasLink ? "all" : "none")};
-  text-decoration: ${({ hasLink }) => (hasLink ? "none" : "line-through")};
+  &:hover {
+    border-color: ${({ theme }) => theme.backgroundColor.orange};
+    color: ${({ theme }) => theme.backgroundColor.orange};
+    background: rgba(252, 41, 4, 0.1);
+  }
 `;
+
+

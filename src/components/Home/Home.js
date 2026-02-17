@@ -16,7 +16,7 @@ import projectIcon from "../../assets/icons/project-icon.svg";
 import aboutIcon from "../../assets/icons/about-me.svg";
 import { IconContext } from "react-icons";
 import { GrLinkedinOption } from "react-icons/gr";
-import { FaEnvelope, FaGithub } from "react-icons/fa";   // ✅ use FaGithub here
+import { FaEnvelope, FaGithub } from "react-icons/fa";
 
 const Home = () => {
   let today = new Date(),
@@ -83,6 +83,8 @@ const Home = () => {
             href="mailto:shivamjmp2@gmail.com"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Email"
+            title="Email"
           >
             <FaEnvelope />
           </Social>
@@ -90,13 +92,17 @@ const Home = () => {
             href="https://github.com/Shivamkumar-33"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="GitHub"
+            title="GitHub"
           >
-            <FaGithub />   {/* ✅ replaced GoMarkGithub */}
+            <FaGithub />
           </Social>
           <Social
             href="https://www.linkedin.com/in/shivam-kumar-34471224b/"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            title="LinkedIn"
           >
             <GrLinkedinOption />
           </Social>

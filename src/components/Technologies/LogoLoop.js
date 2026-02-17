@@ -249,20 +249,6 @@ export const LogoLoop = memo(
       [gap, logoHeight, fadeOutColor]
     );
 
-    const rootClassName = useMemo(
-      () =>
-        [
-          'logoloop',
-          isVertical ? 'logoloop--vertical' : 'logoloop--horizontal',
-          fadeOut && 'logoloop--fade',
-          scaleOnHover && 'logoloop--scale-hover',
-          className
-        ]
-          .filter(Boolean)
-          .join(' '),
-      [isVertical, fadeOut, scaleOnHover, className]
-    );
-
     const handleMouseEnter = useCallback(() => {
       if (effectiveHoverSpeed !== undefined) setIsHovered(true);
     }, [effectiveHoverSpeed]);

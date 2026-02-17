@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  PlaygroundProjectContainer,
+  PlaygroundContainer,
   StyledPlayground,
 } from "../styles/Playground.styled";
 import { SectionHeading, SectionTitle } from "../styles/SectionHeading";
@@ -17,11 +17,11 @@ const Playground = () => {
       <StyledParagraph dark="true" textAlign="center">
         A collection of projects that I've created for practice and leisure.
       </StyledParagraph>
-      <PlaygroundProjectContainer>
+      <PlaygroundContainer>
         {projectsData.map((project) => {
           return <PlaygroundProjectComponent key={project.id} {...project} />;
         })}
-      </PlaygroundProjectContainer>
+      </PlaygroundContainer>
     </StyledPlayground>
   );
 };

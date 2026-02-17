@@ -58,6 +58,8 @@ const MobileMenu = ({ isOpen, toggle }) => {
           href="mailto:shivamjmp2@gmail.com"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Email"
+          title="Email"
         >
           Gm
         </MobileSocial>
@@ -65,6 +67,8 @@ const MobileMenu = ({ isOpen, toggle }) => {
           href="https://github.com/Shivamkumar-33"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="GitHub"
+          title="GitHub"
         >
           Gh
         </MobileSocial>
@@ -73,8 +77,10 @@ const MobileMenu = ({ isOpen, toggle }) => {
           href="https://www.linkedin.com/in/shivam-kumar-34471224b/"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="LinkedIn"
+          title="LinkedIn"
         >
-          ln
+          Ln
         </MobileSocial>
       </MobileSocials>
       <MobileQuote>travaille pour ça</MobileQuote>
