@@ -28,39 +28,39 @@
   animation-delay: 3s;
 }
 
-.responsive :nth-of-type(2) {
+.responsive:nth-of-type(2) {
   animation-delay: 0.8s;
 }
 
-.responsive :nth-of-type(3) {
+.responsive:nth-of-type(3) {
   animation-delay: 4.8s;
 }
 
-.responsive :nth-of-type(4) {
+.responsive:nth-of-type(4) {
   animation-delay: 2s;
 }
 
-.responsive :nth-of-type(5) {
+.responsive:nth-of-type(5) {
   animation-delay: 1.2s;
 }
 
-.responsive :nth-of-type(6) {
+.responsive:nth-of-type(6) {
   animation-delay: 3.6s;
 }
 
-.responsive :nth-of-type(7) {
+.responsive:nth-of-type(7) {
   animation-delay: 2.4s;
 }
 
-.responsive :nth-of-type(8) {
+.responsive:nth-of-type(8) {
   animation-delay: 3.2s;
 }
 
-p span:nth-of-type(9) {
+.responsive:nth-of-type(9) {
   animation-delay: 4s;
 }
 
-p span:nth-of-type(10) {
+.responsive:nth-of-type(10) {
   animation-delay: 1.6s;
 }
 

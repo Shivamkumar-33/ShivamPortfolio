@@ -13,7 +13,7 @@ const GlobalStyles = createGlobalStyle`
 
     body {
     font-size: 100%;
-    font-family: ${({ theme }) => theme.fonts.montserrat}
+    font-family: ${({ theme }) => theme.fonts.montserrat};
     }
 
     img {

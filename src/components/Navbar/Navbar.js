@@ -1,31 +1,109 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import {
   Line,
   Menu,
   NavList,
-  NavLogo,
+  NavLogoWrapper,
+  NavLogoInner,
   NavMenuList,
   StyledCTA,
   StyledNavbar,
   StyledNavLinks,
 } from "../styles/Navbar.styled";
-import logo from "../../assets/logo.svg";
 import { animateScroll as scroll } from "react-scroll";
 import MobileMenu from "./MobileMenu";
+
+const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%&*!?";
+const FULL_LEFT  = "Shivam";
+const FULL_RIGHT = "Kumar";
+
+const SKLogo = ({ onClick }) => {
+  const [left, setLeft]       = useState("S");
+  const [right, setRight]     = useState("K");
+  const [expanded, setExpanded] = useState(false);
+  const wrapRef  = useRef(null);
+  const timerRef = useRef(null);
+
+  const animateTo = useCallback((lTarget, rTarget, onDone) => {
+    let frame = 0;
+    const totalFrames = Math.max(lTarget.length, rTarget.length) * 3 + 5;
+    clearInterval(timerRef.current);
+    timerRef.current = setInterval(() => {
+      frame++;
+      const resolve = (target, idx) => {
+        if (!target[idx]) return "";
+        if (target[idx] === " ") return " ";
+        return frame >= idx * 3 + 3
+          ? target[idx]
+          : CHARS[Math.floor(Math.random() * CHARS.length)];
+      };
+      setLeft(lTarget.split("").map((_, i) => resolve(lTarget, i)).join(""));
+      setRight(rTarget.split("").map((_, i) => resolve(rTarget, i)).join(""));
+      if (frame > totalFrames) {
+        clearInterval(timerRef.current);
+        setLeft(lTarget);
+        setRight(rTarget);
+        onDone?.();
+      }
+    }, 35);
+  }, []);
+
+  const handleMouseEnter = useCallback(() => {
+    setExpanded(true);
+    animateTo(FULL_LEFT, FULL_RIGHT);
+  }, [animateTo]);
+
+  const handleMouseMove = useCallback((e) => {
+    const el = wrapRef.current;
+    if (!el) return;
+    const { left: l, top, width, height } = el.getBoundingClientRect();
+    const x = (e.clientX - l - width / 2) / 9;
+    const y = (e.clientY - top - height / 2) / 9;
+    el.style.transform = `perspective(600px) rotateY(${x}deg) rotateX(${-y}deg) scale(1.1)`;
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    if (wrapRef.current) wrapRef.current.style.transform = "";
+    animateTo("S", "K", () => setExpanded(false));
+  }, [animateTo]);
+
+  useEffect(() => () => clearInterval(timerRef.current), []);
+
+  return (
+    <NavLogoWrapper
+      ref={wrapRef}
+      onClick={onClick}
+      onMouseEnter={handleMouseEnter}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
+      <NavLogoInner $expanded={expanded}>
+        <span className="char s">{left}</span>
+        {!expanded && <span className="slash">/</span>}
+        <span className="char k">{right}</span>
+      </NavLogoInner>
+    </NavLogoWrapper>
+  );
+};
 
 const Navbar = () => {
   const [stickyNav, setStickyNav] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   // Height
-  const stickyNavFunction = () => {
+  const stickyNavFunction = useCallback(() => {
     if (window.scrollY >= 510) {
       setStickyNav(true);
     } else {
       setStickyNav(false);
     }
-  };
+  }, []);
 
-  window.addEventListener("scroll", stickyNavFunction);
+  useEffect(() => {
+    window.addEventListener("scroll", stickyNavFunction);
+    return () => {
+      window.removeEventListener("scroll", stickyNavFunction);
+    };
+  }, [stickyNavFunction]);
 
   const toTop = () => {
     scroll.scrollToTop({ delay: 0, duration: 0 });
@@ -39,7 +117,7 @@ const Navbar = () => {
   return (
     <StyledNavbar className={stickyNav ? "sticky" : ""}>
       <div>
-        <NavLogo to="/" onClick={toTop} src={logo} alt="logo" />
+        <SKLogo onClick={toTop} />
       </div>
       <NavMenuList>
         <NavList>

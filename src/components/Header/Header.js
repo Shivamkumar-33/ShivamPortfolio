@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { ModalLink } from "../styles/Modal.styled";
 
 export const Header = () => {
   return (

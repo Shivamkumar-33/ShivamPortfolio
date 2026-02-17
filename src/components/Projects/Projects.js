@@ -14,7 +14,7 @@ const Projects = () => {
       <StyledParagraph dark="true" textAlign="center">
         Selected projects I've worked on recently.{" "}
         <StyledLink
-          href=" https://github.com/Shivamkumar-33"
+          href="https://github.com/Shivamkumar-33"
           target="_blank"
           rel="noopener noreferrer"
         >
