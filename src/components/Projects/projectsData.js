@@ -1,19 +1,15 @@
 import {
   project1Laptop,
-  project1Mobile,
   project2Laptop,
-  project2Mobile,
   project3Laptop,
-  project3Mobile,
 } from "./projectImages";
 
 export const projectData = [
   {
     id: 1,
     image: project1Laptop,
-    transitionImage: project1Mobile,
     title: "Project 1",
-    description: "Description for project 4",
+    description: "A full-stack web application built with React and Node.js.",
     tags: ["React", "Node.js"],
     codeLink: "https://github.com/Shivamkumar-33",
     liveLink: "#",
@@ -21,9 +17,8 @@ export const projectData = [
   {
     id: 2,
     image: project2Laptop,
-    transitionImage: project2Mobile,
     title: "Project 2",
-    description: "Description for project 5",
+    description: "A modern responsive UI built with React and Tailwind CSS.",
     tags: ["React", "Tailwind"],
     codeLink: "https://github.com/Shivamkumar-33",
     liveLink: "#",
@@ -31,12 +26,10 @@ export const projectData = [
   {
     id: 3,
     image: project3Laptop,
-    transitionImage: project3Mobile,
     title: "Project 3",
-    description: "Description for project 6",
+    description: "A dynamic web application powered by React and Node.js.",
     tags: ["React", "Node.js"],
     codeLink: "https://github.com/Shivamkumar-33",
     liveLink: "#",
   },
-
 ];

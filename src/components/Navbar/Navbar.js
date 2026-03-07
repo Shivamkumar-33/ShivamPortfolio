@@ -202,7 +202,7 @@ const Navbar = () => {
         </span>
       </StyledCTA>
 
-      <Menu onClick={toggle}>
+      <Menu onClick={toggle} aria-label="Toggle navigation menu" role="button" tabIndex={0}>
         <Line width="1.5rem" />
         <Line />
         <Line width="1.5rem" ml="0.5rem" />

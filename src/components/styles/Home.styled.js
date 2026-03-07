@@ -8,6 +8,7 @@ export const StyledHome = styled.section`
   justify-content: center;
   padding: 0 8rem;
   height: 100vh;
+  position: relative;
 
   @media all and (max-width: ${({ theme }) => theme.breakpoints.md}) {
     align-items: center;
@@ -18,7 +19,8 @@ export const StyledHome = styled.section`
 export const Name = styled.h1`
   font-size: 2.1875rem;
   position: relative;
-  color: #fff9f9;
+  z-index: 1;
+  color: ${({ theme }) => theme.color.light};
 
   @media all and (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     font-size: 2.1875rem;
@@ -33,7 +35,9 @@ export const Title = styled.h2`
   font-size: 3.375rem;
   font-weight: 700;
   margin: 0.5rem 0 1rem 0;
-  color: #f7f7f7;
+  position: relative;
+  z-index: 1;
+  color: ${({ theme }) => theme.color.secondaryLight};
 
   @media all and (max-width: ${({ theme }) => theme.breakpoints.md}) {
     text-align: center;
@@ -54,12 +58,15 @@ export const StyledButtonsContainer = styled.div`
   align-items: center;
   gap: 1rem;
   margin-top: 3rem;
+  position: relative;
+  z-index: 1;
 `;
 
 export const Line = styled.hr`
   width: 5rem;
   position: absolute;
   bottom: 6rem;
+  z-index: 1;
   background: ${({ theme }) => theme.backgroundColor.orange};
   border: none;
   height: 0.125rem;
@@ -69,6 +76,7 @@ export const Line = styled.hr`
 export const Greeting = styled.p`
   position: absolute;
   bottom: 3rem;
+  z-index: 1;
 `;
 
 export const Socials = styled.div`
@@ -78,6 +86,7 @@ export const Socials = styled.div`
   position: absolute;
   right: 5rem;
   bottom: 3rem;
+  z-index: 1;
 
   @media all and (max-width: ${({ theme }) => theme.breakpoints.md}) {
     display: none;
@@ -116,8 +125,8 @@ export const Social = styled.a`
 
 export const Quote = styled.span`
   position: absolute;
-  right: 25%;
-  bottom: 30%;
+  right: 45%;
+  bottom: 3rem;
   color: #94929d;
   font-size: 0.625rem;
   letter-spacing: 0.125rem;

@@ -40,31 +40,9 @@ export const darkTheme = {
     text: "#fff",
     textSecondary: "#aaa",
   },
-};
-
-// Light theme
-export const lightTheme = {
-  ...baseTheme,
-  mode: 'light',
-  backgroundColor: {
-    dark: "#ffffff",
-    light: "#0d0e0e",
-    orange: "#fc2904",
-    darkGray: "#f5f5f5",
-    primary: "#ffffff",
-    secondary: "#f5f5f5",
-    card: "#fff",
-  },
-  color: {
-    dark: "#ffffff",
-    darkGray: "#f0f0f5",
-    lightGray: "#555",
-    light: "#0d0e0e",
-    secondaryLight: "#333",
-    tertiaryLight: "#444",
-    link: "#4353ff",
-    text: "#0d0e0e",
-    textSecondary: "#555",
+  border: {
+    default: "#333",
+    subtle: "#1a1a1a",
   },
 };
 

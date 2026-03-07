@@ -40,9 +40,9 @@ const Projects = () => {
       variants={containerVariants}
     >
       <SectionHeading as={motion.div} variants={itemVariants}>
-        <SectionTitle number="project">Projects</SectionTitle>
+        <SectionTitle dark="true" number="project">Projects</SectionTitle>
       </SectionHeading>
-      <StyledParagraph as={motion.p} variants={itemVariants} dark="true" textAlign="center">
+      <StyledParagraph as={motion.p} variants={itemVariants} textAlign="center">
         Selected projects I've worked on recently.{" "}
         <StyledLink
           href="https://github.com/Shivamkumar-33"

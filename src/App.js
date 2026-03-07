@@ -1,45 +1,52 @@
-import About from "./components/About/About";
-import Footer from "./components/Footer/Footer";
+import React, { lazy, Suspense } from "react";
 import Home from "./components/Home/Home";
 import Navbar from "./components/Navbar/Navbar";
-import Projects from "./components/Projects/Projects";
 import GlobalStyles from "./components/styles/Global";
 import { ThemeProvider } from "styled-components";
 import { darkTheme } from "./components/styles/Theme";
 import { BrowserRouter as Router } from "react-router-dom";
-import ParallaxComponent from "./components/Parallax/Parallax";
-import Technologies from "./components/Technologies/Technologies";
-import Playground from "./components/Playground/Playground";
-import { Header } from "./components/Header/Header";
+import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 import { AnimatePresence } from "framer-motion";
 
+const Projects = lazy(() => import("./components/Projects/Projects"));
+const About = lazy(() => import("./components/About/About"));
+const ParallaxComponent = lazy(() => import("./components/Parallax/Parallax"));
+const Technologies = lazy(() => import("./components/Technologies/Technologies"));
+const Playground = lazy(() => import("./components/Playground/Playground"));
+const Footer = lazy(() => import("./components/Footer/Footer"));
+
 function App() {
-  console.log(
-    "%cThank you for checking up of my portfolio. Wishing you the best for every step in your journey!🎉",
-    "color: white; font-weight: 500; font-size:16px"
-  );
-  console.log(
-    "%cYou can check the code here https://github.com/Shivamkumar-33/portfolio",
-    "color: white; font-weight: 500; font-size:16px"
-  );
+  if (process.env.NODE_ENV === 'development') {
+    console.log(
+      "%cThank you for checking up of my portfolio. Wishing you the best for every step in your journey!🎉",
+      "color: white; font-weight: 500; font-size:16px"
+    );
+    console.log(
+      "%cYou can check the code here https://github.com/Shivamkumar-33/portfolio",
+      "color: white; font-weight: 500; font-size:16px"
+    );
+  }
 
   return (
-    <Router>
-      <ThemeProvider theme={darkTheme}>
-        <AnimatePresence mode="wait">
-          <GlobalStyles />
-          <Header />
-          <Navbar />
-          <Home />
-          <Projects />
-          <About />
-          <ParallaxComponent />
-          <Technologies />
-          <Playground />
-          <Footer />
-        </AnimatePresence>
-      </ThemeProvider>
-    </Router>
+    <ErrorBoundary>
+      <Router>
+        <ThemeProvider theme={darkTheme}>
+          <AnimatePresence mode="wait">
+            <GlobalStyles />
+            <Navbar />
+            <Home />
+            <Suspense fallback={null}>
+              <Projects />
+              <About />
+              <ParallaxComponent />
+              <Technologies />
+              <Playground />
+              <Footer />
+            </Suspense>
+          </AnimatePresence>
+        </ThemeProvider>
+      </Router>
+    </ErrorBoundary>
   );
 }
 

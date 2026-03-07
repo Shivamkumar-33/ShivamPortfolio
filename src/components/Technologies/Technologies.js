@@ -2,8 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import {
   TechnologiesContainer,
-  TechnologiesHeader,
 } from "../styles/Technologies.styled";
+import { SectionHeading, SectionTitle } from "../styles/SectionHeading";
 import { LogoLoop } from "./LogoLoop";
 import {
   SiHtml5,
@@ -70,9 +70,11 @@ const Technologies = () => {
       viewport={{ once: true, margin: "-100px" }}
       variants={containerVariants}
     >
-      <TechnologiesHeader as={motion.h2} variants={itemVariants}>
-        Technologies I am familiar with
-      </TechnologiesHeader>
+      <SectionHeading as={motion.div} variants={itemVariants}>
+        <SectionTitle dark="true" number="tech">
+          Technologies
+        </SectionTitle>
+      </SectionHeading>
 
       <motion.div variants={itemVariants}>
         <LogoLoop

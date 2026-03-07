@@ -1,12 +1,12 @@
 import React from "react";
 import { Parallax } from "react-parallax";
-import parralaxImage from "../../assets/quote-background.jpg";
+import parallaxImage from "../../assets/quote-background.jpg";
 import { ParallaxContainer, ParallaxText } from "../styles/Parallax.styled";
 
 const ParallaxComponent = () => {
   return (
     <Parallax 
-      bgImage={parralaxImage} 
+      bgImage={parallaxImage} 
       strength={-200} 
       style={{ width: "100%" }}
       bgImageStyle={{ 

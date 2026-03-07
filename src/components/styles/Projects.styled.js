@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const StyledProjects = styled.section`
-  background-color: ${({ theme }) => theme.backgroundColor.light};
-  color: ${({ theme }) => theme.color.darkGray};
+  background-color: ${({ theme }) => theme.backgroundColor.dark};
+  color: ${({ theme }) => theme.color.light};
 `;
 
 export const ProjectsContainer = styled.div`
@@ -20,8 +20,8 @@ export const ProjectsContainer = styled.div`
 `;
 
 export const ProjectCard = styled.article`
-  background: #1a1a1a;
-  border: 1px solid #333;
+  background: ${({ theme }) => theme.backgroundColor.card};
+  border: 1px solid ${({ theme }) => theme.border.default};
   border-radius: 8px;
   overflow: hidden;
   display: flex;
@@ -66,7 +66,7 @@ export const ProjectTag = styled.span`
   background: rgba(252, 41, 4, 0.1);
   border: 1px solid rgba(252, 41, 4, 0.3);
   border-radius: 20px;
-  color: #fff;
+  color: ${({ theme }) => theme.color.light};
   text-transform: uppercase;
   letter-spacing: 0.5px;
   font-weight: 500;
@@ -75,13 +75,13 @@ export const ProjectTag = styled.span`
 export const ProjectTitle = styled.h3`
   font-size: 1.25rem;
   font-weight: 700;
-  color: #fff;
+  color: ${({ theme }) => theme.color.light};
   line-height: 1.3;
 `;
 
 export const ProjectDescription = styled.p`
   font-size: 0.9rem;
-  color: #aaa;
+  color: ${({ theme }) => theme.color.textSecondary};
   line-height: 1.5;
   flex: 1;
 `;
@@ -98,9 +98,9 @@ export const ProjectLink = styled.a`
   justify-content: center;
   width: 40px;
   height: 40px;
-  border: 1px solid #333;
+  border: 1px solid ${({ theme }) => theme.border.default};
   border-radius: 6px;
-  color: #fff;
+  color: ${({ theme }) => theme.color.light};
   transition: all 0.3s ease;
 
   &:hover {
