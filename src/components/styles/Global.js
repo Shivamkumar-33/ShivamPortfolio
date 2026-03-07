@@ -14,6 +14,9 @@ const GlobalStyles = createGlobalStyle`
     body {
     font-size: 100%;
     font-family: ${({ theme }) => theme.fonts.montserrat};
+    background-color: ${({ theme }) => theme.backgroundColor.dark};
+    color: ${({ theme }) => theme.color.light};
+    transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     img {
@@ -32,6 +35,8 @@ const GlobalStyles = createGlobalStyle`
     section,
     footer{
     padding: 4.32875rem 5rem 7.6125rem 5rem;
+    background-color: ${({ theme }) => theme.backgroundColor.dark};
+    transition: background-color 0.4s ease;
 
     @media all and (max-width: ${({ theme }) => theme.breakpoints.md}) {
         padding: 7.6125rem 2.5rem 7.6125rem 2.5rem;

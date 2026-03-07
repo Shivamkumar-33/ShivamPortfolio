@@ -5,12 +5,13 @@ import Navbar from "./components/Navbar/Navbar";
 import Projects from "./components/Projects/Projects";
 import GlobalStyles from "./components/styles/Global";
 import { ThemeProvider } from "styled-components";
-import { theme } from "./components/styles/Theme";
+import { darkTheme } from "./components/styles/Theme";
 import { BrowserRouter as Router } from "react-router-dom";
 import ParallaxComponent from "./components/Parallax/Parallax";
 import Technologies from "./components/Technologies/Technologies";
 import Playground from "./components/Playground/Playground";
 import { Header } from "./components/Header/Header";
+import { AnimatePresence } from "framer-motion";
 
 function App() {
   console.log(
@@ -24,8 +25,8 @@ function App() {
 
   return (
     <Router>
-      <ThemeProvider theme={theme}>
-        <>
+      <ThemeProvider theme={darkTheme}>
+        <AnimatePresence mode="wait">
           <GlobalStyles />
           <Header />
           <Navbar />
@@ -36,7 +37,7 @@ function App() {
           <Technologies />
           <Playground />
           <Footer />
-        </>
+        </AnimatePresence>
       </ThemeProvider>
     </Router>
   );

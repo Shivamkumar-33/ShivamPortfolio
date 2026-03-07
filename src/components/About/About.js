@@ -174,7 +174,7 @@ class Media {
       }
     }
     this.speed = scroll.current - scroll.last;
-    this.program.uniforms.uTime.value += 0.04;
+    // Removed: this.program.uniforms.uTime.value += 0.04; (stops automatic wave animation)
     this.program.uniforms.uSpeed.value = this.speed;
     const planeOffset = this.plane.scale.x / 2;
     const viewportOffset = this.viewport.width / 2;
@@ -407,7 +407,7 @@ const About = () => {
   return (
     <StyledAbout id="about">
       <SectionHeading dark="true" mb="3rem">
-        <SectionTitle dark="true" number="02">
+        <SectionTitle dark="true" number="about">
           About Me
         </SectionTitle>
       </SectionHeading>

@@ -132,6 +132,27 @@ export const MobileSocials = styled.div`
 
 export const MobileSocial = styled.a``;
 
+export const MobileThemeToggle = styled.button`
+  font-family: ${({ theme }) => theme.fonts.cardo};
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.color.light};
+  background: transparent;
+  border: 2px solid ${({ theme }) => theme.color.light};
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  &:hover {
+    background: ${({ theme }) => theme.color.light};
+    color: ${({ theme }) => theme.backgroundColor.dark};
+  }
+`;
+
 export const MobileQuote = styled.span`
   font-family: ${({ theme }) => theme.fonts.cardo};
   font-style: italic;

@@ -22,7 +22,7 @@ export const SectionTitle = styled.h2`
   &::after {
     position: absolute;
     content: "${(props) => props.number}";
-    left: 5%;
+    left: 55%;
     top: 50%;
     transform: translate(-50%, -50%);
     color: ${(props) =>
@@ -31,7 +31,7 @@ export const SectionTitle = styled.h2`
     font-size: 8rem;
 
     @media all and (max-width: ${({ theme }) => theme.breakpoints.lg}) {
-      font-size: 6rem;
+      font-size: 5rem;
     }
   }
 

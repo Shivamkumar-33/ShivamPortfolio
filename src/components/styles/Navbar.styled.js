@@ -257,6 +257,16 @@ export const StyledCTA = styled.a`
   }
 `;
 
+export const NavActions = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  @media all and (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    display: none;
+  }
+`;
+
 export const Menu = styled.div`
   cursor: pointer;
   display: none;

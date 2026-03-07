@@ -1,9 +1,10 @@
 import React from "react";
+import { motion } from "framer-motion";
 import {
   TechnologiesContainer,
   TechnologiesHeader,
 } from "../styles/Technologies.styled";
-import LogoLoop from "./LogoLoop";
+import { LogoLoop } from "./LogoLoop";
 import {
   SiHtml5,
   SiCss3,
@@ -20,6 +21,28 @@ import {
   SiAdobexd,
   SiVisualstudiocode,
 } from "react-icons/si";
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
 
 const Technologies = () => {
   const techLogos = [
@@ -40,21 +63,31 @@ const Technologies = () => {
   ];
 
   return (
-    <TechnologiesContainer>
-      <TechnologiesHeader>Technologies I am familiar with</TechnologiesHeader>
+    <TechnologiesContainer
+      as={motion.section}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-100px" }}
+      variants={containerVariants}
+    >
+      <TechnologiesHeader as={motion.h2} variants={itemVariants}>
+        Technologies I am familiar with
+      </TechnologiesHeader>
 
-      <LogoLoop
-        logos={techLogos}
-        speed={100}
-        direction="left"
-        logoHeight={60}
-        gap={40}
-        pauseOnHover={true}
-        scaleOnHover={true}
-        fadeOut={true}
-        fadeOutColor="#0d0e0e"
-        ariaLabel="Technologies"
-      />
+      <motion.div variants={itemVariants}>
+        <LogoLoop
+          logos={techLogos}
+          speed={100}
+          direction="left"
+          logoHeight={60}
+          gap={40}
+          pauseOnHover={true}
+          scaleOnHover={true}
+          fadeOut={true}
+          fadeOutColor="#0d0e0e"
+          ariaLabel="Technologies"
+        />
+      </motion.div>
     </TechnologiesContainer>
   );
 };
